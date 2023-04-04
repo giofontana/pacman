@@ -6,6 +6,7 @@ resources:
 - mongo-pvc.yaml
 - mongo-deployment.yaml
 - mongo-service.yaml
+- mongo-secret.yaml
 - pacman-deployment.yaml
 - pacman-service.yaml
 - pacman-route.yaml

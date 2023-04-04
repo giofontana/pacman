@@ -28,6 +28,8 @@ router.get('/list', urlencodedParser, function(req, res, next) {
             }
 
             docs.forEach(function(item, index, array) {
+                console.log(item['name']);
+                console.log(item['cloud']);
                 result.push({ name: item['name'], cloud: item['cloud'],
                               zone: item['zone'], host: item['host'],
                               score: item['score'] });
