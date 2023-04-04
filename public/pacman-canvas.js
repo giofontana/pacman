@@ -46,7 +46,7 @@ function geronimo() {
              for (var i = 0; i < msg.length; i++) {
                 var rank = i + 1;
                 // Can we make this shorter?
-                $("#highscore-table tbody").append("<tr><td id='rank'>" + rank + "</td><td id='playername'>" + msg[i]['name'] + "</td><td id='cloudprovider'>" + msg[i]['cloud'] + "</td><td id='zone'>" + msg[i]['zone'] + "</td><td id='host'>" + msg[i]['host'] + "</td><td id='score'>" + msg[i]['score'] + "</td></tr>");
+                $("#highscore-table tbody").append("<tr><td id='rank'>" + rank + "</td><td id='playername'>" + msg[i]['name'] + "</td><td id='cloudprovider'>" + msg[i]['cloud'] + "</td><td id='host'>" + msg[i]['host'] + "</td><td id='score'>" + msg[i]['score'] + "</td></tr>");
              }
            }
         });

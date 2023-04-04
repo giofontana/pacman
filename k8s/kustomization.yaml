@@ -1,0 +1,13 @@
+
+namespace: pacman
+
+resources:
+- namespace.yaml
+- mongo-pvc.yaml
+- mongo-deployment.yaml
+- mongo-service.yaml
+- pacman-deployment.yaml
+- pacman-service.yaml
+- pacman-route.yaml
+- pacman-secret-job.yaml
+- cluster-role-binding.yaml

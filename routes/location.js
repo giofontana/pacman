@@ -11,37 +11,41 @@ router.use(function timeLog(req, res, next) {
     next();
 })
 
-router.get('/metadata', function(req, res, next) {
+router.get('/metadata', function (req, res, next) {
     console.log('[GET /loc/metadata]');
     var h = getHost();
-    getCloudMetadata(function(c, z) {
-        console.log(`CLOUD: ${c}`);
-        console.log(`ZONE: ${z}`);
-        console.log(`HOST: ${h}`);
-        res.json({
-            cloud: c,
-            zone: z,
-            host: h
-        });
+    /*    getCloudMetadata(function(c, z) {
+            console.log(`CLOUD: ${c}`);
+            console.log(`ZONE: ${z}`);
+            console.log(`HOST: ${h}`);
+            res.json({
+                cloud: c,
+                zone: z,
+                host: h
+            });*/
+    res.json({
+        cloud: process.env.MY_CLUSTER_NAME,
+        zone: "-",
+        host: h
     });
 });
 
 function getCloudMetadata(callback) {
     console.log('getCloudMetadata');
     // Query k8s node api
-    getK8sCloudMetadata(function(err, c, z) {
+    getK8sCloudMetadata(function (err, c, z) {
         if (err) {
             // Try AWS next
-            getAWSCloudMetadata(function(err, c, z) {
+            getAWSCloudMetadata(function (err, c, z) {
                 if (err) {
                     // Try Azure next
-                    getAzureCloudMetadata(function(err, c, z) {
+                    getAzureCloudMetadata(function (err, c, z) {
                         if (err) {
                             // Try GCP next
-                            getGCPCloudMetadata(function(err, c, z) {
+                            getGCPCloudMetadata(function (err, c, z) {
                                 if (err) {
                                     // Try Openstack next
-                                    getOpenStackCloudMetadata(function(err, c, z) {
+                                    getOpenStackCloudMetadata(function (err, c, z) {
                                         // Return result regardless of error
                                         callback(c, z); // Running in OpenStack or unknown
                                     });
